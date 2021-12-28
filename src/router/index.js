@@ -6,7 +6,7 @@ const routes = [
     name: 'Index',
     component:  () => import('../views/Index.vue')
   },{
-    path: '/:slug',
+    path: '/:slug+',
     name: 'Category',
     component: () => import('../views/Category.vue')
   }
