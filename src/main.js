@@ -22,7 +22,6 @@ function parse(node, path) {
     }  
 
     node.fields.path = path;
-    // node.fields.trail = crumb(path);
 
     let id = crumb(path);
         id.shift();
@@ -54,21 +53,8 @@ contentful.getEntries({
 
     parse(response.items[0], []);
 
-    console.log(response.items);
-
     const   app = createApp(App);
             app.use(router);
-            app.mixin({
-                methods:{
-                    crumb: function(path){
-                        let bread = [];
-                        for(let crumb in path){        
-                            bread.push(path[crumb].fields.slug);
-                        }
-                        return bread;
-                    }
-                }
-            });
             app.config.globalProperties.$categoryTree = response.items;
             app.config.globalProperties.$categoryIndex = categoryIndex;
             app.mount('#app');
