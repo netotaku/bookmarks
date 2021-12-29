@@ -1,4 +1,15 @@
 <template>
+
+  <section class="section">
+    <h2>{{ cursor.fields.label }}</h2>
+
+    <table v-if="cursor.fields.links && cursor.fields.links.length > 0">
+      <tr v-for="link in cursor.fields.links" :key="link.sys.id">
+        <td><a target="_blank" href="{{ link.fields.url }}">{{ link.fields.url }}</a></td>
+      </tr>
+    </table>
+
+  </section>
   
   <menu class="menu">    
     <ul>
@@ -21,14 +32,19 @@
 import Tree from './components/Tree.vue'
 
 export default {
-  name: 'Menu',
   components: {
     Tree
   },
   data: function(){
     return {
       items: [],
-      cursor: []
+      cursor: {
+        fields: {
+          label: 'test',
+          links: [],
+          categories: []
+        }
+      }
     }
   },
   mounted: function(){
@@ -37,7 +53,7 @@ export default {
   watch: {
     $route(to, from) {
       to, from;      
-        console.log('changed')
+        this.cursor = this.$categoryIndex[this.$route.fullPath];
     }
   },  
 }
