@@ -1,42 +1,24 @@
 <template>
-
-  <section class="section">
-    <router-view
-      :items="items"
-    />
-  </section>
   
-  <menu class="menu">
+  <menu class="menu">    
     <ul>
-      <li>
-        <router-link to="/">Home</router-link>
-          <ul>
-              <li v-for="item in items" :key="item.sys.id">
-                  <Tree 
-                    :slug="item.fields.slug"
-                    :label="item.fields.label"
-                    :children="item.fields.categories"
-                    :path="item.fields.path"
-                    :trail="crumb(item.fields.path)"
-                    :count="0"></Tree>
-              </li>
-          </ul>
-      </li>
+        <li v-for="item in items" :key="item.sys.id">
+            <Tree 
+              :slug="item.fields.slug"
+              :label="item.fields.label"
+              :children="item.fields.categories"
+              :path="item.fields.path"
+              :trail="item.fields.trail"
+              :count="0"></Tree>
+        </li>
     </ul>
   </menu>
-    
-  
 
 </template>
 
 <script>
-import * as Contentful from 'contentful'
-import Tree from './components/Tree.vue'
 
-let contentful = Contentful.createClient({
-    space: '1p0ns3osrnp9',
-    accessToken: 'NX99wR6EKWoFP1RMu8E_dCkIdV7a8ax0An2RuaNu54Y',
-})
+import Tree from './components/Tree.vue'
 
 export default {
   name: 'Menu',
@@ -45,37 +27,19 @@ export default {
   },
   data: function(){
     return {
-      items: []
+      items: [],
+      cursor: []
     }
   },
   mounted: function(){
-
-    contentful.getEntries({
-      "content_type": "category",
-      "access_token": "NX99wR6EKWoFP1RMu8E_dCkIdV7a8ax0An2RuaNu54Y",
-      "fields.slug": "index",
-      "include": 10
-    }).then((response) => {
-      this.parse(response.items[0], []);
-      this.items = response.items;             
-    });
-
+    this.items = this.$categoryTree;
   },
-  methods: {
-    parse: function (node, path) {
-      if ( !path )
-        path = [];
-      if (node) {
-        path.push(node)
-      }      
-      node.fields.path = path;
-      if (node.fields.categories) {
-        node.fields.categories.forEach((item) => {
-          this.parse(item, path.slice());
-        });
-      }
+  watch: {
+    $route(to, from) {
+      to, from;      
+        console.log('changed')
     }
-  }
+  },  
 }
 </script>
 
@@ -89,12 +53,14 @@ export default {
 }
 html{
   font-size: 1em;
+  line-height: 1.6;
 }
 .menu{
   border-top: solid 1px #ccc;
   a{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 8px 16px;
     text-decoration: none;
     border-bottom: solid 1px #ccc;
@@ -111,11 +77,7 @@ html{
       // background: #377D14; 
     }
     li{
-      a{
-        // background: #52B91E; 
-      }
-      li{
-        ul{
+      ul{
           display: none;
         }
         &:hover{
@@ -123,6 +85,11 @@ html{
             display: block;
           }
         }
+      a{
+        // background: #52B91E; 
+      }
+      li{
+
         a{          
           //background: #BBED30; 
           // color: #377D14; 

@@ -1,7 +1,3 @@
 <template>
-    <h2>Bookmarks</h2>
+    <h2>Index</h2>
 </template>
-
-<script>
-
-</script>
