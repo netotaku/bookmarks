@@ -7,7 +7,9 @@
         display: inline-block;
         font-size: 2em;        
         text-decoration: none;   
-        border-bottom: solid 1px #B8D2AC;    
+        border-bottom: solid 1px #B8D2AC;   
+        word-break: break-word;
+        line-height: 1.2; 
         &:hover{
             border-color: transparent;
         } 
