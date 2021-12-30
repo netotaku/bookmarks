@@ -10,12 +10,14 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "axios": "^0.24.0",
     "contentful": "^9.1.5",
     "core-js": "^3.6.5",
     "dns": "^0.2.2",
     "http2": "^3.3.7",
     "metadata-scraper": "^0.2.48",
     "vue": "^3.0.0",
+    "vue-axios": "^3.4.0",
     "vue-contentful-api": "^1.0.6",
     "vue-router": "^4.0.0-0"
   },

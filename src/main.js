@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import * as Contentful from 'contentful'
 
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 let categoryIndex = {};
 
 function crumb(path){
@@ -54,9 +57,10 @@ contentful.getEntries({
     parse(response.items[0], []);
 
     const   app = createApp(App);
-            app.use(router);
+            app.use(router, VueAxios, axios);
             app.config.globalProperties.$categoryTree = response.items;
             app.config.globalProperties.$categoryIndex = categoryIndex;
+            app.config.globalProperties.$linkDataCache = [];
             app.mount('#app');
 
 });

@@ -20,8 +20,9 @@
 
       <ul class="links" v-if="cursor.fields.links && cursor.fields.links.length > 0">
         <li v-for="link in cursor.fields.links" :key="link.sys.id">
-          <a class="links__link" target="_blank" :href="link.fields.url">{{ link.fields.url }}</a>
-          <span class="links__id"><i class="fas fa-square"></i> {{ link.sys.id }}</span>
+          <Card
+            :link="link"
+           />
         </li>
       </ul>
 
@@ -32,10 +33,11 @@
 
 <script>
 import Tree from './components/Tree.vue'
+import Card from './components/Card.vue'
 
 export default {
   components: {
-    Tree
+    Tree, Card
   },
   data: function(){
     return {
@@ -69,7 +71,8 @@ export default {
   @import "./scss/_pill.scss";
   @import "./scss/_grid.scss";
   @import "./scss/_menu.scss";
-  @import "./scss/_links.scss";  
+  @import "./scss/_links.scss";
+  @import "./scss/_card.scss";  
 
   .section{
     padding: $gutter;
