@@ -1,0 +1,22 @@
+.links{
+    list-style-type: none;
+    li{
+        margin-bottom: 20px;
+    }
+    &__link{
+        display: inline-block;
+        font-size: 2em;        
+        text-decoration: none;   
+        border-bottom: solid 1px #B8D2AC;    
+        &:hover{
+            border-color: transparent;
+        } 
+    }
+    &__id{
+        display: block;
+        color: rgba(0,0,0,.3);
+        font-size: .8em;
+        margin-top: 4px;
+        text-transform: uppercase;
+    }
+}

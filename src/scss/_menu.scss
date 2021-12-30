@@ -1,60 +1,63 @@
 .menu{
-    border-top: solid 1px #ccc;
-    a{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-bottom: solid 1px #ccc;
-  
-      // color: #fff;    
-      &:hover{   
-        span{
-          text-decoration: underline;
-        }           
-      }
+    
+    border-top: solid 1px #B8D2AC;    
+    background: #F1F5D9;
+
+    &__link{
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        border-bottom: solid 1px #B8D2AC;
+
+        &__a{
+            display: inline-block;
+            text-decoration: none;
+            color: #1F460C;
+            padding: $gutter;
+        }
+
+        &__expand{
+            background: rgba(0,0,0,.05);
+            color: #377D14;
+            padding: $gutter;
+            cursor: pointer;
+        }
     } 
+
+    /////////
+
     ul{
-      list-style-type: none;
-    } 
-    li{
-      a{
-        // background: #; 
-      }
-      li{
-  
-        border-left: solid 8px #377D14; // 52B91E;
-  
-        // ul{
-        //     display: none;
-        //   }
-        //   &:hover{
-        //     > ul{
-        //       display: block;
-        //     }
-        //   }
-        a{
-          // background: #52B91E; 
-        }
+        list-style-type: none;
         li{
-          border-color: #52B91E; // ;
-          a{          
-            //background: #BBED30; 
-            // color: #377D14; 
-          }
-          li{
-            border-color: #BBED30;
-            a{                 
-              // background: #EFF5A9;             
+            a{ 
+                // font-size: 22px; text-transform: uppercase;
             }
-            li{
-              a{
-                // background: #F1F5D9; 
-              }
+            li{  
+                border-left: solid 8px #377D14; 
+                a{ 
+                    font-weight: bold; 
+                }
+                li{
+                    border-color: #52B91E;
+                    a{ font-weight: normal; }
+                    li{
+                        border-color: #BBED30;
+                        a{ }
+                        li{
+                            a{ }
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    } 
-  }
+        } 
+    }
+ 
+    /////////
+
+    @media only screen and (min-width : $break) {  
+        border-right: solid 1px #B8D2AC;
+    }
+    
+}

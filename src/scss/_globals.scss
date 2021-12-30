@@ -1,12 +1,33 @@
     *{
         margin: 0px;
         padding: 0px;
-        box-sizing: border-box;
-        font-family: Tahoma;
+        box-sizing: border-box;  
     }
 
     html{
-        font-size: 1em;
+        font-size: 1em;                
         line-height: 1.6;
-        background: #eee;
+        font-family: sans-serif;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: Tahoma;        
+        color: #1F460C;
+        background: #387D16;
+    }
+    
+    a{
+        color: #f60;
+    }
+
+    [cloak]{
+        display: none;
+    }
+
+    @media only screen and (min-width : $break) {  
+        a{
+            &:hover{
+                text-decoration: none;
+            }
+        }
     }
