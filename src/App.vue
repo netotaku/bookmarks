@@ -21,7 +21,7 @@
       <ul class="links" v-if="cursor.fields.links && cursor.fields.links.length > 0">
         <li v-for="link in cursor.fields.links" :key="link.sys.id">
           <a class="links__link" target="_blank" :href="link.fields.url">{{ link.fields.url }}</a>
-          <span class="links__id">{{ link.sys.id }}</span>
+          <span class="links__id"><i class="fas fa-square"></i> {{ link.sys.id }}</span>
         </li>
       </ul>
 
