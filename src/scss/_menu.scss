@@ -1,6 +1,6 @@
 .menu{
     
-    border-top: solid 1px #B8D2AC;    
+      
     background: #F1F5D9;
 
     &__link{
@@ -27,6 +27,13 @@
     } 
 
     /////////
+
+    .router-link-exact-active{
+        border-left: solid 8px #f90;
+        padding-left: 12px;
+        // text-decoration: underline;
+        //color: orange;
+    }
 
     ul{
         list-style-type: none;

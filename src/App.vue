@@ -1,21 +1,23 @@
 <template>
 
   <header class="header">
-    <h1 class="header__brand">{{ cursor.fields.label }}</h1>
+    <!-- <h1 class="header__brand">{{ cursor.fields.label }}</h1> -->
     <div class="breadcrumb">
-      <router-link class="breadcrumb__link breadcrumb__link--home" to="/"><span><i class="fas fa-th-list"></i></span></router-link>
-      <span v-for="item in trim(cursor.fields.path)" :key="item.sys.id">
-        <router-link 
-          class="breadcrumb__link" 
-          :to="{
-            name: 'Category',
-            params: {
-              slug: item.fields.trail
-            }
-          }">
+      <router-link class="breadcrumb__link breadcrumb__link--home" to="/">
+        <span><i class="far fa-list-alt"></i></span></router-link>
+      <router-link 
+        v-for="item in trim(cursor.fields.path)" :key="item.sys.id"
+        class="breadcrumb__link" 
+        :to="{
+          name: 'Category',
+          params: {
+            slug: item.fields.trail
+          }
+        }">
+        <span>
           {{ item.fields.label }}
-        </router-link>
-      </span>      
+        </span>
+      </router-link>      
     </div>
   </header>
 

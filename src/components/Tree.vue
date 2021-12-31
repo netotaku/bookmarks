@@ -8,7 +8,7 @@
                     slug: trail
                 }
             }">{{ label }}</router-link> 
-            <span v-if="count > 0" class="menu__link__count pill">
+            <span v-if="count < 0" class="menu__link__count pill">
                 {{ count }}</span>    
         </span>        
         <span v-if="children" class="menu__link__expand">
