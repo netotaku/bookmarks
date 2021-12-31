@@ -1,5 +1,16 @@
 .card{
    &__thumb{
-       
+
    } 
+   &__link{
+       a{
+        font-size: 2em;
+        text-decoration: none;
+        word-break: break-word;
+       }       
+   }
+   &__data{
+       color: rgba(0,0,0,.3);
+       font-family: monospace;
+   }
 }
