@@ -28,9 +28,12 @@
 
     /////////
 
-    .router-link-exact-active{
-        border-left: solid 8px #f90;
-        padding-left: 12px;
+    .js-selected > span{
+        a{
+            border-left: solid 8px #f90;
+            padding-left: 12px;
+        }        
+        background: #FFDEA2;
         // text-decoration: underline;
         //color: orange;
     }

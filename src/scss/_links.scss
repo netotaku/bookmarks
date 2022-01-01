@@ -1,26 +1,6 @@
 .links{
     list-style-type: none;
-    li{
+    li:not(:last-child){
         margin-bottom: $space;
     }
-    // &__link{
-    //     display: inline-block;
-    //     font-size: 2em;        
-    //     text-decoration: none;   
-    //     border-bottom: solid 1px #B8D2AC;   
-    //     word-break: break-word;
-    //     line-height: 1.2; 
-    //     margin-bottom: $space;
-    //     &:hover{
-    //         border-color: transparent;
-    //     } 
-    // }
-    // &__id{
-    //     display: block;
-    //     color: rgba(0,0,0,.3);
-    //     font-size: .8em;
-    //     margin-top: 4px;
-    //     text-transform: uppercase;
-    //     font-family: monospace;
-    // }
 }

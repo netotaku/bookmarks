@@ -8,8 +8,8 @@
                     slug: trail
                 }
             }">{{ label }}</router-link> 
-            <span v-if="count < 0" class="menu__link__count pill">
-                {{ count }}</span>    
+            <sup v-if="count > 0" class="menu__link__count pill">
+                {{ count }}</sup>    
         </span>        
         <span v-if="children" class="menu__link__expand">
             <i class="fas fa-angle-down"></i></span>
@@ -17,7 +17,9 @@
 
     <ul v-if="children">
         <li v-for="child in children"
-            :key="child.sys.id">
+            :key="child.sys.id"
+            :id="child.sys.id"
+            class="js-link">
             <Tree 
                 :slug="child.fields.slug"
                 :label="child.fields.label"

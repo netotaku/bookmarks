@@ -1,25 +1,14 @@
 <template>
-    <div class="card">
-
-        <div :style="(URLdata.image != '') ? 'background-image: url(' + URLdata.image + ')' : ''" 
-                class="card__thumb"></div>
-
-
-        
+    <div class="card">        
         <div class="card__link">
-            <a class="" target="_blank" :href="link.fields.url">{{ link.fields.url }}</a>
-        </div>
+            <a class="" target="_blank" :href="link.fields.url">{{ link.fields.url }}</a></div>
 
         <div class="card__data">
-            <i class="fas fa-square"></i> {{ link.sys.id }}
-        </div>
+            <i class="fas fa-square"></i> {{ link.sys.id }}</div>
         
         <div class="card__info">
-            {{ URLdata.title }} {{ URLdata.description }} 
-        </div>
-
+            {{ URLdata.title }} {{ URLdata.description }} </div>
     </div>
-    <!-- <img v-if="" :src="URLdata.image">     -->
 </template>
 
 <script>

@@ -1,30 +1,32 @@
 <template>
 
   <header class="header">
-    <!-- <h1 class="header__brand">{{ cursor.fields.label }}</h1> -->
     <div class="breadcrumb">
-      <router-link class="breadcrumb__link breadcrumb__link--home" to="/">
+      <router-link class="breadcrumb__link" to="/">
         <span><i class="far fa-list-alt"></i></span></router-link>
-      <router-link 
-        v-for="item in trim(cursor.fields.path)" :key="item.sys.id"
-        class="breadcrumb__link" 
-        :to="{
-          name: 'Category',
-          params: {
-            slug: item.fields.trail
-          }
-        }">
-        <span>
-          {{ item.fields.label }}
-        </span>
-      </router-link>      
+        <router-link 
+          v-for="item in trim(cursor.fields.path)" :key="item.sys.id"
+          class="breadcrumb__link" 
+          :to="{
+            name: 'Category',
+            params: {
+              slug: item.fields.trail
+            }
+          }">
+          <span>
+            {{ item.fields.label }}
+          </span>
+        </router-link>      
     </div>
   </header>
 
   <div class="hg">
     <menu class="hg__u hg__u--qtr menu">    
       <ul>
-          <li v-for="item in items" :key="item.sys.id">
+          <li v-for="item in items" 
+            :key="item.sys.id"
+            :id="item.sys.id"
+            class="js-link">
               <Tree 
                 :slug="item.fields.slug"
                 :label="item.fields.label"
@@ -36,14 +38,33 @@
       </ul>
     </menu>
 
-    <section class="hg__u hg__u--3-qtrs section section--equal section--green">
-      <ul class="links" v-if="cursor.fields.links && cursor.fields.links.length > 0">
-        <li v-for="link in cursor.fields.links" :key="link.sys.id">
-          <Card
-            :link="link"
-           />
-        </li>
-      </ul>
+    <section class="hg__u hg__u--3-qtrs content">
+      <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="section section--equal section--green">
+        <ul class="links">
+          <li v-for="link in cursor.fields.links" :key="link.sys.id">
+            <Card
+              :link="link"
+            />
+          </li>
+        </ul>
+      </div>
+      <div v-if="cursor.fields.categories && cursor.fields.categories.length > 0" class="section section--equal">
+        <ul> 
+          <li v-for="child in cursor.fields.categories" :key="child.sys.id">
+            <router-link 
+              :to="{
+                name: 'Category',
+                params: {
+                  slug: child.fields.trail
+                }
+              }">
+              <span>
+                {{ child.fields.label }}
+              </span>
+            </router-link>    
+          </li>
+        </ul>
+      </div>
     </section>
   </div>
 
@@ -77,7 +98,11 @@ export default {
     $route(to, from) {
       to, from;      
         this.cursor = this.$categoryIndex[this.$route.fullPath];
-        console.log(this.cursor.fields.path.slice());
+        let as = document.querySelectorAll('.js-link');
+        for(let i = 0; i < as.length; i++){
+          as[i].classList.remove('js-selected');
+        }
+        document.getElementById(this.cursor.sys.id).classList.add('js-selected');
     }
   },
   methods: {
@@ -100,13 +125,18 @@ export default {
   @import "./scss/_menu.scss";
   @import "./scss/_links.scss";
   @import "./scss/_card.scss";  
-  @import "./scss/_header.scss";  
+  @import "./scss/_header.scss";
+  @import "./scss/_content.scss";  
 
   .section{
     padding: $gutter;
     &--green{
-      background: #D4E3CD;
-    }
+      // background: #D4E3CD;
+      background: #E2F2DA;
+    } 
+    &--white{
+      background: white;
+    }    
     &--equal{
       padding: $space;
     }
