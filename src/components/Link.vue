@@ -20,13 +20,13 @@
             :key="child.sys.id"
             :id="child.sys.id"
             class="js-link">
-            <Tree 
+            <Link 
                 :slug="child.fields.slug"
                 :label="child.fields.label"
                 :children="child.fields.categories"
                 :path="child.fields.path"
                 :trail="child.fields.trail"
-                :count="child.fields.links ? child.fields.links.length : 0"></Tree>                               
+                :count="child.fields.links ? child.fields.links.length : 0" />                                     
         </li>
     </ul>
  
@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'Tree',
+  name: 'Link',
   props: [ 'slug', 'label', 'children', 'path', 'count', 'trail' ]
 }
 </script>

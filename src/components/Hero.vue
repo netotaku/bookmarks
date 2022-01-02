@@ -5,7 +5,6 @@
   </div>  
 </template>
 
-
 <style scoped lang="scss">
     .hero{
         position: relative;

@@ -29,13 +29,13 @@
             :key="item.sys.id"
             :id="item.sys.id"
             class="js-link">
-              <Tree 
+              <Link 
                 :slug="item.fields.slug"
                 :label="item.fields.label"
                 :children="item.fields.categories"
                 :path="item.fields.path"
                 :trail="item.fields.trail"
-                :count="0"></Tree>
+                :count="0" />
           </li>
       </ul>
     </menu>
@@ -77,13 +77,14 @@
 </template>
 
 <script>
-import Tree from './components/Tree.vue'
+import Link from './components/Link.vue'
 import Card from './components/Card.vue'
 import Hero from './components/Hero.vue'
+import Breadcrumb from './components/Breadcrumb.vue'
 
 export default {
   components: {
-    Tree, Card, Hero
+    Link, Card, Hero, Breadcrumb
   },
   data: function(){
     return {
