@@ -1,7 +1,8 @@
 <template>
 
+  <Hero />
+
   <header class="header">
-    <div class="header__hero"></div>
     <div class="breadcrumb">
       <router-link class="breadcrumb__link" to="/">
         <span><i class="far fa-list-alt"></i></span></router-link>
@@ -78,10 +79,11 @@
 <script>
 import Tree from './components/Tree.vue'
 import Card from './components/Card.vue'
+import Hero from './components/Hero.vue'
 
 export default {
   components: {
-    Tree, Card
+    Tree, Card, Hero
   },
   data: function(){
     return {
