@@ -1,12 +1,17 @@
 .header{    
-    // &__brand{
-    //     color: #52B91E;
-    //     text-transform: uppercase;
-    //     font-family: Arial, Helvetica, sans-serif;
-    // }
-    // &__brand{
-    //     padding: $space;
-    // }
+    &__hero{
+        display: block;
+        background: url(/hero.jpg);
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        // width: 100%;
+        // height: auto;
+    }
+}
+
+.footer{
+    min-height: 200px;
 }
 
 .breadcrumb{

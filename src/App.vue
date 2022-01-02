@@ -1,6 +1,7 @@
 <template>
 
   <header class="header">
+    <div class="header__hero"></div>
     <div class="breadcrumb">
       <router-link class="breadcrumb__link" to="/">
         <span><i class="far fa-list-alt"></i></span></router-link>
@@ -38,7 +39,7 @@
       </ul>
     </menu>
 
-    <section class="hg__u hg__u--3-qtrs content">
+    <section class="hg__u hg__u--3-qtrs content">      
       <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="section section--equal section--green">
         <ul class="links">
           <li v-for="link in cursor.fields.links" :key="link.sys.id">
@@ -48,8 +49,10 @@
           </li>
         </ul>
       </div>
+      
       <div v-if="cursor.fields.categories && cursor.fields.categories.length > 0" class="section section--equal">
-        <ul> 
+        <h1><i class="fas fa-folder-open"></i></h1>
+        <ul class="children"> 
           <li v-for="child in cursor.fields.categories" :key="child.sys.id">
             <router-link 
               :to="{
@@ -67,6 +70,8 @@
       </div>
     </section>
   </div>
+
+  <footer class="footer"></footer>
 
 </template>
 
@@ -127,6 +132,7 @@ export default {
   @import "./scss/_card.scss";  
   @import "./scss/_header.scss";
   @import "./scss/_content.scss";  
+  @import "./scss/_children.scss";  
 
   .section{
     padding: $gutter;
