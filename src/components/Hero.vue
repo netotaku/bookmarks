@@ -1,9 +1,34 @@
 <template>
   <div class="hero">
-    <div class="hero__clouds"></div>    
+    <div id="js-clouds" class="hero__clouds"></div>    
     <a class="hero__clarky" href="#"></a>
   </div>  
 </template>
+
+<script>
+export default {
+    mounted: function(){
+        this.X = 0;
+        this.clouds = document.getElementById('js-clouds');
+        console.log(this.clouds);
+        this.animate();
+    },
+    methods: {
+        animate: function(){
+            console.log(this.X)
+            setTimeout(() => {
+                this.X+=.25;
+                if(this.X > 1192.5){
+                    this.X = 0;
+                }
+                this.clouds.style.backgroundPosition = -this.X+'px';
+                this.animate();
+            }, 100)
+        }
+    }
+}
+</script>
+
 
 <style scoped lang="scss">
     .hero{

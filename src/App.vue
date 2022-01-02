@@ -1,26 +1,8 @@
 <template>
 
   <Hero />
+  <Breadcrumb :cursor="cursor" />
 
-  <header class="header">
-    <div class="breadcrumb">
-      <router-link class="breadcrumb__link" to="/">
-        <span><i class="far fa-list-alt"></i></span></router-link>
-        <router-link 
-          v-for="item in trim(cursor.fields.path)" :key="item.sys.id"
-          class="breadcrumb__link" 
-          :to="{
-            name: 'Category',
-            params: {
-              slug: item.fields.trail
-            }
-          }">
-          <span>
-            {{ item.fields.label }}
-          </span>
-        </router-link>      
-    </div>
-  </header>
 
   <div class="hg">
     <menu class="hg__u hg__u--qtr menu">    
@@ -91,7 +73,7 @@ export default {
       items: [],
       cursor: {
         fields: {
-          label: 'test',
+          label: '',
           links: [],
           categories: [],
           path: []
@@ -112,14 +94,7 @@ export default {
         }
         document.getElementById(this.cursor.sys.id).classList.add('js-selected');
     }
-  },
-  methods: {
-    trim: function(arr){
-      let o = [];
-      for(let i = 1; i < arr.length; i++ ) o.push(arr[i]);      
-      return o;
-    }
-  }  
+  }
 }
 </script>
 
