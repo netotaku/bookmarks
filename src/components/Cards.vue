@@ -80,7 +80,7 @@ export default {
                     a{
                         display: block;
                         padding: $space;                        
-                        background: white;
+                        background: orange;
                         border-radius: 8px;
                         position: relative;
                         overflow: hidden;
@@ -88,13 +88,15 @@ export default {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        border: solid 1px #B8D2AC;
+                        color: white;
+                        // border: solid 1px #B8D2AC;
                         i{
                             display: inline-block;
-                            color: #1F460C;
+                           // color: #1F460C;
                         }
                         span{
-                            text-decoration: underline;
+                            // text-decoration: underline;
+                            font-weight: bold;
                         }
                     }
                 } 
