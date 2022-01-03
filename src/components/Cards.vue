@@ -4,7 +4,7 @@
         
         
         <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="panel links">
-            <p class="panel__title"><i class="fas fa-external-link-square-alt"></i><span>{{ cursor.fields.label }}</span></p>
+            <p class="panel__title"><span>{{ cursor.fields.label }}</span></p>
             <ul>
                 <li v-for="link in cursor.fields.links" :key="link.sys.id">
                     <Card
@@ -111,11 +111,11 @@ export default {
 
     .panel{
         &__title{
-            font-size: 1.6em;
+            font-size: 1.3em;
             margin-bottom: $space;
             span{
-                display: inline-block;
-                margin-left: 8px;
+                // display: inline-block;
+                // margin-left: 8px;
                 font-weight: bold;
             }
         }

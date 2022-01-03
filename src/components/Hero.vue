@@ -53,7 +53,7 @@ export default {
         &__clarky{
             position: absolute;
             bottom: -1px;
-            left: 8vw;
+            left: 12vw;
 
             width: 57px;
             height: 105px;

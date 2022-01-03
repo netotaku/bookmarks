@@ -51,6 +51,12 @@ export default{
     // align-items: center;
     // justify-content: space-between;
 
+    /* Rectangle 15: */
+
+    box-shadow: 0 4px 0 0 rgba(0,0,0,0.1);
+    border-bottom: solid 1px #99A991;
+    // border-top: solid 1px #99A991;
+
 
     &__back{
         display: flex;
