@@ -9,7 +9,7 @@
       <Cards :cursor="cursor" />
     </section>
   </div>
-  <Footer :cursor="cursor" />
+  <Footer />
 </template>
 
 <script>

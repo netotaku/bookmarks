@@ -67,6 +67,7 @@ export default{
         display: flex;        
         position: relative;
         overflow: auto;
+        margin-right: 78px;
     }
     
 
