@@ -1,16 +1,23 @@
 <template>
     <div class="section section--equal">
+
         
-        <ul v-if="cursor.fields.links && cursor.fields.links.length > 0" class="links">
-            <li v-for="link in cursor.fields.links" :key="link.sys.id">
-                <Card
-                :link="link"
-                />
-            </li>
-        </ul>
         
-        <div class="children" v-if="cursor.fields.categories && cursor.fields.categories.length > 0">
-            <p class="children__title"><i class="fas fa-folder-open"></i></p>
+        <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="panel links">
+            <p class="panel__title"><i class="fas fa-external-link-square-alt"></i><span>{{ cursor.fields.label }}</span></p>
+            <ul>
+                <li v-for="link in cursor.fields.links" :key="link.sys.id">
+                    <Card
+                    :link="link"
+                    />
+                </li>
+            </ul>
+        </div>
+
+
+        
+        <div class="panel children" v-if="cursor.fields.categories && cursor.fields.categories.length > 0">
+            <p class="panel__title"><i class="fas fa-folder-open"></i></p>
             <ul> 
                 <li v-for="child in cursor.fields.categories" :key="child.sys.id">
                     <router-link 
@@ -43,9 +50,11 @@ export default {
     @import "../scss/_vars.scss";
 
     .links{
-        list-style-type: none;
-        li:not(:last-child){
-            margin-bottom: $space;
+        ul{
+            list-style-type: none;
+            li:not(:last-child){
+                margin-bottom: $space;
+            }
         }
     }
 
@@ -54,10 +63,6 @@ export default {
     }
 
     .children{
-        &__title{
-            font-size: 1.8em;
-            margin-bottom: $space;
-        }
         ul{
             list-style-type: none;
             li{        
@@ -103,5 +108,18 @@ export default {
             }           
         }
     }
+
+    .panel{
+        &__title{
+            font-size: 1.6em;
+            margin-bottom: $space;
+            span{
+                display: inline-block;
+                margin-left: 8px;
+                font-weight: bold;
+            }
+        }
+    }
+        
 
 </style>
