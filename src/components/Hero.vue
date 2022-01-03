@@ -55,9 +55,14 @@ export default {
             bottom: -1px;
             left: 8vw;
 
-            width: 18px;
-            height: 70px;
+            width: 57px;
+            height: 105px;
             background-image: url(/hero/clarky.png);
+            background-position: -57px;
+            background-repeat: no-repeat;            
+            &:hover, &:focus{
+                background-position: 0px;
+            }
 
         }
         &__clouds{
