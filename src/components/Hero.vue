@@ -56,7 +56,7 @@ export default {
             left: 12vw;
 
             width: 57px;
-            height: 105px;
+            height: 69px;
             background-image: url(/hero/clarky.png);
             background-position: -57px;
             background-repeat: no-repeat;            
