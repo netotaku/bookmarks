@@ -3,7 +3,7 @@
         <p><strong>Nick Clarkson</strong> is an award winning full stack developer and Technical Director at <a target="_blank" href="https://wearehalo.co.uk">Halo</a>.</p>
         <ul class="socials">
             <li v-for="link in socials" :key="link.label">
-                <a :href="link.href"><i :class="link.icon"></i></a></li>            
+                <a target="_blank" :href="link.href"><i :class="link.icon"></i></a></li>            
         </ul>
         <p><router-link to="/me">More ...</router-link></p>
     </footer>
