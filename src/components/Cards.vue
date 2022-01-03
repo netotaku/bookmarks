@@ -1,28 +1,27 @@
 <template>
     <div class="section section--equal">
-        <div v-if="cursor.fields.links && cursor.fields.links.length > 0">
-            <ul class="links">
-                <li v-for="link in cursor.fields.links" :key="link.sys.id">
-                    <Card
-                    :link="link"
-                    />
-                </li>
-            </ul>
-        </div>
-        <div v-if="cursor.fields.categories && cursor.fields.categories.length > 0">
-            <h1><i class="fas fa-folder-open"></i></h1>
-            <ul class="children"> 
+        
+        <ul v-if="cursor.fields.links && cursor.fields.links.length > 0" class="links">
+            <li v-for="link in cursor.fields.links" :key="link.sys.id">
+                <Card
+                :link="link"
+                />
+            </li>
+        </ul>
+        
+        <div class="children" v-if="cursor.fields.categories && cursor.fields.categories.length > 0">
+            <p class="children__title"><i class="fas fa-folder-open"></i></p>
+            <ul> 
                 <li v-for="child in cursor.fields.categories" :key="child.sys.id">
                     <router-link 
-                    :to="{
-                        name: 'Category',
-                        params: {
-                        slug: child.fields.trail
-                        }
-                    }">
-                    <span>
-                        {{ child.fields.label }}
-                    </span>
+                        :to="{
+                            name: 'Category',
+                            params: {
+                            slug: child.fields.trail
+                            }
+                        }">                    
+                        <span>{{ child.fields.label }}</span>
+                        <i class="fas fa-chevron-right"></i>
                     </router-link>    
                 </li>
             </ul>
@@ -49,20 +48,58 @@ export default {
             margin-bottom: $space;
         }
     }
-    .card{
-        &__link{
-            a{
-                font-size: 1.2em;
-                text-decoration: none;
-                word-break: break-word;
-            }       
-        }
-        &__data{
-            color: rgba(0,0,0,.3);
-            font-family: monospace;
-        }
+
+    .links + .children{
+        margin-top: $space;
     }
+
     .children{
-        list-style-type: none; 
+        &__title{
+            font-size: 1.8em;
+            margin-bottom: $space;
+        }
+        ul{
+            list-style-type: none;
+            li{        
+                a{
+                    i{
+                        display: none;
+                    }
+                }
+            }
+        }
     }
+
+    @media only screen and (max-width : $break) {  
+        .children{            
+            ul{
+                li{
+                    &:not(:last-child){
+                        margin-bottom: $space;
+                    }
+                    a{
+                        display: block;
+                        padding: $space;                        
+                        background: white;
+                        border-radius: 8px;
+                        position: relative;
+                        overflow: hidden;
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border: solid 1px #B8D2AC;
+                        i{
+                            display: inline-block;
+                            color: #1F460C;
+                        }
+                        span{
+                            text-decoration: underline;
+                        }
+                    }
+                } 
+            }           
+        }
+    }
+
 </style>
