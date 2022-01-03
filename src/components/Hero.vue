@@ -52,7 +52,7 @@ export default {
         background-color: #79C9FA;
         &__clarky{
             position: absolute;
-            bottom: 0px;
+            bottom: -1px;
             left: 8vw;
 
             width: 18px;
