@@ -1,20 +1,26 @@
 <template> 
     <div class="breadcrumb">
-      <router-link class="breadcrumb__link" to="/">
-        <span><i class="far fa-list-alt"></i></span></router-link>
-        <router-link 
-          v-for="item in trim(cursor.fields.path)" :key="item.sys.id"
-          class="breadcrumb__link" 
-          :to="{
-            name: 'Category',
-            params: {
-              slug: item.fields.trail
-            }
-          }">
-          <span>
-            {{ item.fields.label }}
-          </span>
-        </router-link>      
+        <div class="breadcrumb__links">
+
+            <router-link class="breadcrumb__link" to="/">
+                <span><i class="far fa-list-alt"></i></span></router-link>
+
+            <router-link 
+                v-for="item in trim(cursor.fields.path)" :key="item.sys.id"
+                class="breadcrumb__link" 
+                :to="{
+                    name: 'Category',
+                    params: {
+                    slug: item.fields.trail
+                    }
+                }">
+                <span>
+                    {{ item.fields.label }}
+                </span>
+            </router-link>  
+               
+        </div>
+        <a v-if="$route.path != '/'" class="breadcrumb__back" href="#" @click.prevent="back()">Back</a>
     </div>
 </template>
 
@@ -27,25 +33,49 @@ export default{
             let o = [];
             for(let i = 1; i < arr.length; i++ ) o.push(arr[i]);      
             return o;
+        },
+        back: function(){
+            window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
         }
     }
 }  
 </script>
 
 <style lang="scss">
+@import "../scss/_vars.scss";
 .breadcrumb{
 
-    display: flex;
     background: #B8D2AC;
-
     position: relative;
-    overflow: auto;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+
+
+    &__back{
+        display: flex;
+        padding: $gutter;
+        color: #1F460C;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        background: url(/grad.png);
+        padding-left: 32px;
+    }
+
+    &__links{
+        display: flex;        
+        position: relative;
+        overflow: auto;
+    }
+    
 
     &__link{
         color: white;
         display: block;
-        padding: 8px 30px;
-        transform: skew(45deg); /* SKEW */
+        padding: $gutter;
+        
+
         white-space: nowrap;
 
         text-decoration: none;
@@ -54,15 +84,8 @@ export default{
             
         }
 
-        span{
-            display: block;
-            transform: skew(-45deg); /* SKEW */
-        }
-
         &:nth-child(1){
             background: #f90;
-            padding-left: 50px;
-            margin-left: -30px;
         }
 
         &:nth-child(2){
@@ -78,6 +101,22 @@ export default{
         &:nth-child(5){
             background: #BBED30;
         }                
+    }
+
+
+    @media only screen and (min-width : $break) {  
+        &__link{
+            transform: skew(45deg); /* SKEW */
+            padding: 8px 30px;
+            span{
+                display: block;
+                transform: skew(-45deg); /* SKEW */
+            }
+            &:nth-child(1){            
+                padding-left: 50px;
+                margin-left: -30px;
+            }
+        }
     }
 }
 </style>

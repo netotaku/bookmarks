@@ -69,8 +69,7 @@ export default {
   @import "./scss/_vars.scss";
   @import "./scss/_globals.scss";
   @import "./scss/_pill.scss";
-  @import "./scss/_grid.scss";
-  @import "./scss/_menu.scss";  
+  @import "./scss/_grid.scss";  
    
   .section{
     padding: $gutter;
