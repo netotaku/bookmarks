@@ -1,46 +1,28 @@
 <template>
-
   <Hero />
   <Breadcrumb :cursor="cursor" />
-
-
   <div class="hg">
     <menu class="hg__u hg__u--qtr menu">    
-      <ul>
-          <li v-for="item in items" 
-            :key="item.sys.id"
-            :id="item.sys.id"
-            class="js-link">
-              <Link 
-                :slug="item.fields.slug"
-                :label="item.fields.label"
-                :children="item.fields.categories"
-                :path="item.fields.path"
-                :trail="item.fields.trail"
-                :count="0" />
-          </li>
-      </ul>
+      <Tree :items="items" />
     </menu>
     <section class="hg__u hg__u--3-qtrs content"> 
       <Cards :cursor="cursor" />
     </section>
   </div>
-
   <Footer :cursor="cursor" />
-
 </template>
 
 <script>
-import Link from './components/Link.vue'
-import Cards from './components/Cards.vue'
+
 import Hero from './components/Hero.vue'
 import Breadcrumb from './components/Breadcrumb.vue'
-
+import Tree from './components/Tree.vue'
+import Cards from './components/Cards.vue'
 import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    Link, Cards, Hero, Breadcrumb, Footer
+    Cards, Hero, Breadcrumb, Footer, Tree
   },
   data: function(){
     return {
@@ -57,16 +39,25 @@ export default {
   },
   mounted: function(){
     this.items = this.$categoryTree;
+    this.update();          
   },
-  watch: {
-    $route(to, from) {
-      to, from;      
-        this.cursor = this.$categoryIndex[this.$route.fullPath];
+  methods: {
+    update: function(){
+      this.cursor = this.$categoryIndex[this.$route.fullPath];
+    },
+    selected: function(){
         let as = document.querySelectorAll('.js-link');
         for(let i = 0; i < as.length; i++){
           as[i].classList.remove('js-selected');
         }
         document.getElementById(this.cursor.sys.id).classList.add('js-selected');
+    }
+  },
+  watch: {
+    $route(to, from) {
+      to, from;      
+        this.update();    
+        this.selected();      
     }
   }
 }
@@ -79,17 +70,11 @@ export default {
   @import "./scss/_globals.scss";
   @import "./scss/_pill.scss";
   @import "./scss/_grid.scss";
-  @import "./scss/_menu.scss";
-  @import "./scss/_links.scss";
-  @import "./scss/_card.scss";  
-  @import "./scss/_header.scss";
-  @import "./scss/_content.scss";  
-  @import "./scss/_children.scss";  
-
+  @import "./scss/_menu.scss";  
+   
   .section{
     padding: $gutter;
-    &--green{
-      // background: #D4E3CD;
+    &--green{      
       background: #E2F2DA;
     } 
     &--white{
@@ -102,6 +87,10 @@ export default {
 
   .hg{    
     @include hgrid(12, 0px, $break, true);  
+  }
+
+  .content{     
+    background: #E2F2DA;
   }
 
 </style>

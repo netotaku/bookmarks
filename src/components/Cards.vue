@@ -37,3 +37,30 @@ export default {
     props: ['cursor']
 }
 </script>
+
+<style lang="scss">
+    @import "../scss/_vars.scss";
+
+    .links{
+        list-style-type: none;
+        li:not(:last-child){
+            margin-bottom: $space;
+        }
+    }
+    .card{
+        &__link{
+            a{
+                font-size: 1.2em;
+                text-decoration: none;
+                word-break: break-word;
+            }       
+        }
+        &__data{
+            color: rgba(0,0,0,.3);
+            font-family: monospace;
+        }
+    }
+    .children{
+        list-style-type: none; 
+    }
+</style>

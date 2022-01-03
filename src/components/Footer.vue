@@ -1,14 +1,14 @@
 <template>
-    <footer class="footer">{{ cursor.fields.label }}</footer>
+    <footer class="footer"></footer>
 </template>
 <script>
 export default {
-    props: ['cursor'],
-    watch: {
-    $route(to, from) {
-      to, from;      
-       // console.log(this.cursor.fields);
-    }
-  }
+
 }
 </script>
+
+<style lang="scss">
+    .footer{
+        min-height: 200px;
+    }
+</style>
