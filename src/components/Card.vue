@@ -1,11 +1,10 @@
 <template>
-    <div class="card">        
-        <div class="card__link">
-            <a target="_blank" :href="link.fields.url">{{ link.fields.url }}</a></div>
-
+    <div class="card">    
         <div class="card__data">
             <i :class="icon(link.fields.url)"></i> {{ link.sys.id }}</div>
-        
+
+        <div class="card__link">
+            <a target="_blank" :href="link.fields.url">{{ link.fields.url }}</a></div>        
     </div>
 </template>
 
@@ -80,6 +79,9 @@ export default {
                 font-size: 1.2em;
                 text-decoration: none;
                 word-break: break-word;
+                &:hover{
+                    text-decoration: underline;
+                }
             }       
         }
         &__data{

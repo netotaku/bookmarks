@@ -1,14 +1,15 @@
 <template>
+    <div class="header section section--equal">
+        <h1>{{ cursor.fields.label }}</h1>
+        <a v-if="$route.path != '/'" class="header__back" href="#" @click.prevent="back()">Back</a>
+    </div>
     <div class="section section--equal">
 
-        
-        
-        <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="panel links">
-            <p class="panel__title"><span>{{ cursor.fields.label }}</span></p>
+        <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="panel links">            
             <ul>
                 <li v-for="link in cursor.fields.links" :key="link.sys.id">
                     <Card
-                    :link="link"
+                        :link="link"
                     />
                 </li>
             </ul>
@@ -42,12 +43,33 @@ export default {
     components: {
         Card
     },
-    props: ['cursor']
+    props: ['cursor'],
+    methods: {
+        back: function(){
+            window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+        }
+    }
 }
 </script>
 
 <style lang="scss">
     @import "../scss/_vars.scss";
+
+    .header{    
+        // color: #B8D2AC;
+        background: rgba(0,0,0,.05);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h1{
+            line-height: 1.1;
+            font-size: 1.2em;        
+        }
+        &__back{
+            color: #1F460C;
+        }
+    }
 
     .links{
         ul{

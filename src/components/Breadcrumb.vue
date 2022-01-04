@@ -19,8 +19,7 @@
                 </span>
             </router-link>  
                
-        </div>
-        <a v-if="$route.path != '/'" class="breadcrumb__back" href="#" @click.prevent="back()">Back</a>
+        </div>        
     </div>
 </template>
 
@@ -33,9 +32,6 @@ export default{
             let o = [];
             for(let i = 1; i < arr.length; i++ ) o.push(arr[i]);      
             return o;
-        },
-        back: function(){
-            window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
         }
     }
 }  
@@ -43,17 +39,19 @@ export default{
 
 <style lang="scss">
 @import "../scss/_vars.scss";
+
 .breadcrumb{
 
     background: #B8D2AC;
     position: relative;
+    box-shadow: 0 4px 0 0 rgba(0,0,0,0.1);
+
     // display: flex;
     // align-items: center;
     // justify-content: space-between;
 
     /* Rectangle 15: */
 
-    box-shadow: 0 4px 0 0 rgba(0,0,0,0.1);
     border-bottom: solid 1px #99A991;
     // border-top: solid 1px #99A991;
 
@@ -73,7 +71,7 @@ export default{
         display: flex;        
         position: relative;
         overflow: auto;
-        margin-right: 78px;
+        // margin-right: 78px;
     }
     
 
