@@ -86,6 +86,9 @@ export default {
 
   .hg{    
     @include hgrid(12, 0px, $break, true);  
+    &--gap{
+      gap: $space;
+    }
   }
 
   .content{     

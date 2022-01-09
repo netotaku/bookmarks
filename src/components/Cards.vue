@@ -1,21 +1,23 @@
 <template>
     <div class="header section section--equal">
         <h1>{{ cursor.fields.label }}</h1>
+        <div v-if="cursor.fields.links && pageSize < cursor.fields.links.length" class="pagination">
+            <a href="#" @click.prevent="next(-1)">prev</a>
+            <a href="#" @click.prevent="next(1)">next</a>
+        </div>
         <a v-if="$route.path != '/'" class="header__back" href="#" @click.prevent="back()">Back</a>
     </div>
     <div class="section section--equal">
 
-        <div v-if="cursor.fields.links && cursor.fields.links.length > 0" class="panel links">            
-            <ul>
-                <li v-for="link in cursor.fields.links" :key="link.sys.id">
+        <div v-if="cards && cards.length > 0" class="panel links">            
+            <ul class="hg hg--gap">
+                <li v-for="link in cards" :key="link.sys.id" class="hg__u hg__u--thd js-card">
                     <Card
-                        :link="link"
+                        :link="link"                        
                     />
                 </li>
             </ul>
         </div>
-
-
         
         <div class="panel children" v-if="cursor.fields.categories && cursor.fields.categories.length > 0">
             <p class="panel__title"><i class="fas fa-folder-open"></i></p>
@@ -34,20 +36,51 @@
                 </li>
             </ul>
         </div>
+
     </div>
 </template>
 
 <script>
+import {VueMasonryPlugin} from 'vue-masonry';
 import Card from './Card.vue'
+
 export default {
     components: {
-        Card
+        Card, VueMasonryPlugin
+    },
+    data: function(){
+        return {
+            pageSize: 9,
+            cards: []
+        }
     },
     props: ['cursor'],
+    mounted: function(){
+        this.paginate();
+    },
     methods: {
         back: function(){
             window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+        },
+        paginate: function(){
+            let page = []
+            
+            if(this.cursor.fields.links && this.cursor.fields.links.length > this.pageSize){
+                for(let i = 0; i < this.pageSize; i++){
+                    page.push(this.cursor.fields.links[i]);
+                }                                             
+            } else {
+                page = this.cursor.fields.links;
+            }
+
+            this.cards = page; 
+        },
+        next: function(inc){
+            inc;
         }
+    },
+    beforeUpdate: function(){
+        this.paginate();
     }
 }
 </script>
@@ -75,7 +108,7 @@ export default {
         ul{
             list-style-type: none;
             li:not(:last-child){
-                margin-bottom: $space;
+                //margin-bottom: $space;
             }
         }
     }
@@ -141,6 +174,10 @@ export default {
                 font-weight: bold;
             }
         }
+    }
+
+    .js-hide{
+        display: none;
     }
         
 

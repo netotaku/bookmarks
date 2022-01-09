@@ -58,6 +58,7 @@ export default {
 
     /////////
 
+    
     .js-selected > span{
         a{
             border-left: solid 8px #f90;
@@ -68,10 +69,7 @@ export default {
 
     ul{
         list-style-type: none;
-        li{
-            a{ 
-
-            }
+        li{          
             li{  
                 border-left: solid 8px #377D14; 
                 a{ 
@@ -82,10 +80,6 @@ export default {
                     a{ font-weight: normal; }
                     li{
                         border-color: #BBED30;
-                        a{ }
-                        li{
-                            a{ }
-                        }
                     }
                 }
             }

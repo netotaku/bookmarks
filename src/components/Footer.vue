@@ -1,6 +1,6 @@
 <template>
     <footer class="footer section section--equal">        
-        <p><strong>Nick Clarkson</strong> is an award winning full stack developer and Technical Director at <a target="_blank" href="https://wearehalo.co.uk">Halo</a>.</p>
+        <p>I have been creating things for the internet since 1999 this is an archive of them.</p>
         <ul class="socials">
             <li v-for="link in socials" :key="link.label">
                 <a target="_blank" :href="link.href"><i :class="link.icon"></i></a></li>            
