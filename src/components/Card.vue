@@ -68,7 +68,7 @@ export default {
             } 
             
             if(urlData.host.indexOf('mixcloud.com') > -1){                  
-                this.embed = 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&mini=0&hide_artwork=1&feed=' + encodeURIComponent(urlData.pathname);                                
+               // this.embed = 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&mini=0&hide_artwork=1&feed=' + encodeURIComponent(urlData.pathname);                                
                 this.icon = "fab fa-mixcloud";
                 this.modifier = "card__embed--mixcloud";
             } 
@@ -94,8 +94,8 @@ export default {
                         // let iframe = document.createElement(JSON.parse(r).html)// console.log(r);
                         let ifr = JSON.parse(r).html.match(/src\s*=\s*"([^"]+)"/g)[0];
                             ifr = ifr.substring(5,ifr.length-1);
-                        this.embed = ifr; // 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(ifr.substring(5,ifr.length-1)) + '&color=%23ff5500&inverse=false&auto_play=false&show_user=true';
-                        console.log(this.embed);
+                       //  this.embed = ifr; // 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(ifr.substring(5,ifr.length-1)) + '&color=%23ff5500&inverse=false&auto_play=false&show_user=true';
+                        // console.log(this.embed);
 
                         // console.log();
                     })

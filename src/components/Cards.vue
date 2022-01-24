@@ -9,6 +9,15 @@
     </div>
     <div class="section section--equal">
 
+
+        <div v-masonry="containerId" transition-duration="0.3s" item-selector=".item">
+            <div v-masonry-tile class="item" v-for="(card, index) in cards" :key="index">
+              !!!
+            </div>
+        </div>
+
+
+    
         <div v-if="cards && cards.length > 0" class="panel links">            
             <ul class="hg hg--gap">
                 <li v-for="link in cards" :key="link.sys.id" class="hg__u hg__u--thd js-card">
@@ -18,6 +27,7 @@
                 </li>
             </ul>
         </div>
+    
         
         <div class="panel children" v-if="cursor.fields.categories && cursor.fields.categories.length > 0">
             <p class="panel__title"><i class="fas fa-folder-open"></i></p>
@@ -46,7 +56,7 @@ import Card from './Card.vue'
 
 export default {
     components: {
-        Card, VueMasonryPlugin
+        Card //, VueMasonryPlugin
     },
     data: function(){
         return {
@@ -57,6 +67,7 @@ export default {
     props: ['cursor'],
     mounted: function(){
         this.paginate();
+        console.log(VueMasonryPlugin);
     },
     methods: {
         back: function(){

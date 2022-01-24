@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
+import {VueMasonryPlugin} from 'vue-masonry';
 import App from './App.vue'
 import router from './router'
 import * as Contentful from 'contentful'
+
 
 let categoryIndex = {};
 
@@ -54,7 +56,8 @@ contentful.getEntries({
     parse(response.items[0], []);
 
     const   app = createApp(App);
-            app.use(router);
+            app.use(router, VueMasonryPlugin);
+            // app.component("VueMasonryPlugin", VueMasonryPlugin);
             app.config.globalProperties.$categoryTree = response.items;
             app.config.globalProperties.$categoryIndex = categoryIndex;
             app.config.globalProperties.$linkDataCache = [];
